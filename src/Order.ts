@@ -26,7 +26,7 @@ export default class Order {
 		for (const orderItem of this.orderItems) {
 			total += orderItem.getTotal();
 		}
-		if (this.coupon) {
+		if (this.coupon && !this.coupon.isExpired()) {
 			total -= ((total * this.coupon.percentage)/100);
 		}
 		return total;
